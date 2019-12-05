@@ -19,16 +19,16 @@ stages:
     jobs:
       - job:
         steps:
-          - task: Npm@0
-            displayName: 'Install bower'
+          - task: Bash@3
             inputs:
-              arguments: 'bower --allow-root'
-
-          - script: |
-              bower install --allow-root
-            workingDirectory: 'src/ZeroToPipeline'
-            displayName: 'Run bower'
-
+              targetType: 'inline'
+              script: |
+                sudo chown -R $USER /usr/local/lib/node_modules/
+                sudo chown -R $USER /usr/local/bin/
+          - task: Bower@0
+            inputs:
+              command: 'install'
+              bowerjson: 'src/ZTPLiveYoTeam/bower.json'
           - task: DotNetCoreInstaller@0
             displayName: 'Use .NET Core SDK 2.0.0'
             inputs:
