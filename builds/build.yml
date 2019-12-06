@@ -28,7 +28,7 @@ stages:
           - task: Bower@0
             inputs:
               command: 'install'
-              bowerjson: 'src/ZTPLiveYoTeam/bower.json'
+              bowerjson: 'src/ZeroToPipeline/bower.json'
           - task: DotNetCoreInstaller@0
             displayName: 'Use .NET Core SDK 2.0.0'
             inputs:
